@@ -31,7 +31,7 @@ TCP基础：
 		创建文件对象时如果指定了缓冲区，就需要调用flush()
 		即使有了文件对象也要保存socket对象，shutdown()只有socket对象才有
 		不同协议(TCP,UDP)可以使用相同的端口
-		recvfrom()调用返回一个touple, 包括接受的数据和发送数据的地址
+		recvfrom()调用返回一个tuple, 包括接受的数据和发送数据的地址
 		一个服务器进程终止后，操作系统会保留几分钟他的端口，防止其他的进程在超时前使用这个端口。
 		SO_REUSEADDR为true,会立刻释放端口
 		不同平台的Pytho支持的socket选项不同。通过dir(socket)查看
@@ -50,3 +50,11 @@ TCP基础：
 	解决方法：send 和 recv交叉进行
 			连续send发送的数据不能太大
 			多线程
+			
+	DNS是一个全球分布式数据库
+	操作系统先查询/etc/hosts/， 然后去DNS查询
+	操作系统提供一个方法为名称服务器(DNS服务器)指定IP地址  /etc/resolv.conf
+	Python定义socket.getaddrinfo()返回一个tuple的list, 根据所支持的不同协议产生一个结果
+	host is a simple utility for performing DNS lookups
+	对于一个IP地址，完全可能不存在反向的映射。反向查找时需要捕获socket.herror()异常
+	反向查询纯在欺骗，由于ＤＮＳ信息的授权方式，反向查询的授权是基于ＩＰ地址的.先反向再正向，确定结果
