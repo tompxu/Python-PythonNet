@@ -36,4 +36,17 @@ TCP基础：
 		SO_REUSEADDR为true,会立刻释放端口
 		不同平台的Pytho支持的socket选项不同。通过dir(socket)查看
 		bind()第一个参数为空，表示绑定所有的接口和地址
+	syslog优先权：
+		LOG_EMERG 紧急情况，系统非正常关机或不能用
+		LOG_ALERT 向管理员发送警报
+		LOG_CRIT  产生了一个致命错误
+		LOG_ERR	  产生了一个普通错误
+		LOG_WARNING 一个警告
+		LOG_NOTICE 重要的正常通知
+		LOG_INFO 普通信息
+		L0G_DEBUG 调试信息
 		
+	死锁发生在一个服务器和客服端同时向一个连接读或写
+	解决方法：send 和 recv交叉进行
+			连续send发送的数据不能太大
+			多线程
